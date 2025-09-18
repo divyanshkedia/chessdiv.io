@@ -1,0 +1,27 @@
+:root {
+  --background: #202225;
+  --primary: #2f3136;
+  --secondary: #36393f;
+  --text-primary: #dcddde;
+  --text-secondary: #a1a3a7;
+  --accent: #5865f2;
+  --light-square: #ebebd0;
+  --dark-square: #779556;
+  --highlight: rgba(88, 101, 242, 0.5);
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

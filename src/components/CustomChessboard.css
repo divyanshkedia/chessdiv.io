@@ -1,0 +1,43 @@
+/* src/components/CustomChessboard.css */
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 1fr;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 90vmin;
+  max-height: 90vmin;
+}
+
+
+.square {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* This is needed for the dot */
+}
+
+.square.light { background-color: var(--light-square); }
+.square.dark { background-color: var(--dark-square); }
+.square.selected { background-color: var(--highlight); }
+
+.piece {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  user-select: none;
+  cursor: grab;
+  position: relative; /* Ensures piece is on top of the dot */
+  z-index: 2;
+}
+
+.legal-move-dot {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  z-index: 1;
+}

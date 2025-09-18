@@ -1,0 +1,36 @@
+.move-history-container {
+  flex-grow: 1; /* This is the key: it makes the component fill the vertical space */
+  background-color: var(--secondary);
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  overflow-y: auto; /* This makes the content scrollable */
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.move-pair {
+  display: flex;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.move-pair:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1); /* Adds a subtle striping for readability */
+}
+
+.move-number {
+  color: var(--text-secondary);
+  width: 30px;
+  text-align: right;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.move {
+  flex-basis: 70px;
+  font-weight: 500;
+  color: var(--text-primary);
+}

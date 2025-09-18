@@ -1,0 +1,58 @@
+.player-pod {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: var(--secondary);
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.player-pod.active {
+  border-left-color: var(--accent);
+  background-color: #3e4148;
+}
+
+/* New rule for the black player's name */
+.player-pod.b .username {
+  color: #a1a3a7;
+}
+
+.player-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-details .username { font-weight: 700; font-size: 1.1rem; }
+.player-details .rating { margin-left: 0.5rem; color: var(--text-secondary); }
+
+.clock-display {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.captured-pieces-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  height: 20px;
+}
+
+.captured-pieces {
+  display: flex;
+  gap: 0.1rem;
+}
+
+.captured-piece-img {
+  width: 18px;
+  height: 18px;
+}
+
+.material-advantage {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--text-secondary);
+}

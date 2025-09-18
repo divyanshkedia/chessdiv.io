@@ -1,0 +1,21 @@
+.game-page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.board-container {
+  height: 90vh; /* Board will be 90% of the viewport height */
+  width: 90vh;  /* Same width to create a square container */
+  max-width: 800px;
+  max-height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
