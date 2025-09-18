@@ -1,4 +1,5 @@
 /* src/components/CustomChessboard.css */
+
 .chessboard {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -7,8 +8,17 @@
   width: 100%;
   max-width: 90vmin;
   max-height: 90vmin;
+  
+  /* Minimalist frame */
+  border: 2px solid #2c3e50;
+  border-radius: 12px;
+  padding: 6px;
+  background: #34495e;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
-
 
 .square {
   width: 100%;
@@ -16,12 +26,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* This is needed for the dot */
+  position: relative;
+  transition: all 0.2s ease;
 }
 
-.square.light { background-color: var(--light-square); }
-.square.dark { background-color: var(--dark-square); }
-.square.selected { background-color: var(--highlight); }
+/* Clean, modern squares */
+.square.light {
+  background: #f8f9fa;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.square.dark {
+  background: #495057;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Subtle selection highlight */
+.square.selected {
+  background: #3498db !important;
+  box-shadow: inset 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+.square:hover:not(.selected) {
+  background-color: rgba(52, 152, 219, 0.1);
+}
 
 .piece {
   width: 85%;
@@ -29,15 +57,36 @@
   object-fit: contain;
   user-select: none;
   cursor: grab;
-  position: relative; /* Ensures piece is on top of the dot */
+  position: relative;
   z-index: 2;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
+.piece:hover {
+  transform: scale(1.05);
+}
+
+.piece:active {
+  cursor: grabbing;
+  transform: scale(1.08);
+}
+
+/* Clean move indicators */
 .legal-move-dot {
   position: absolute;
-  width: 30%;
-  height: 30%;
-  background-color: rgba(0, 0, 0, 0.2);
+  width: 32%;
+  height: 32%;
+  background: #27ae60;
   border-radius: 50%;
   z-index: 1;
+  opacity: 0.8;
+  box-shadow: 0 2px 6px rgba(39, 174, 96, 0.3);
+}
+
+/* CSS Variables for theming */
+:root {
+  --light-square: #f8f9fa;
+  --dark-square: #495057;
+  --highlight: #3498db;
 }

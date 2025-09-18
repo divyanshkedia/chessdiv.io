@@ -1,36 +1,54 @@
 .move-history-container {
-  flex-grow: 1; /* This is the key: it makes the component fill the vertical space */
-  background-color: var(--secondary);
-  border-radius: 6px;
+  flex-grow: 1;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  border-radius: 8px;
   margin: 1.5rem 0;
-  padding: 1rem;
-  overflow-y: auto; /* This makes the content scrollable */
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.95rem;
+  padding: 1.25rem;
+  overflow-y: auto;
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+  font-size: 0.9rem;
   box-sizing: border-box;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .move-pair {
   display: flex;
-  margin-bottom: 0.5rem;
-  padding: 0.25rem;
-  border-radius: 4px;
+  margin-bottom: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+.move-pair:hover {
+  background: rgba(52, 152, 219, 0.15);
+  border-left-color: #3498db;
+  transform: translateX(3px);
 }
 
 .move-pair:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.1); /* Adds a subtle striping for readability */
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .move-number {
-  color: var(--text-secondary);
-  width: 30px;
+  color: #bdc3c7;
+  width: 32px;
   text-align: right;
-  margin-right: 0.75rem;
+  margin-right: 0.8rem;
   flex-shrink: 0;
+  font-weight: 500;
 }
 
 .move {
   flex-basis: 70px;
-  font-weight: 500;
-  color: var(--text-primary);
+  font-weight: 600;
+  color: #ecf0f1;
+  transition: color 0.2s ease;
+}
+
+.move:hover {
+  color: #3498db;
 }
