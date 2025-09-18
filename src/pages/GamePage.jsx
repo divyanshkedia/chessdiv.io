@@ -18,7 +18,6 @@ function GamePage() {
   );
   
   const { whiteCaptures, blackCaptures, materialAdvantage } = useMemo(() => {
-    // This calculation is correct and remains the same
     const pieceValues = { p: 1, n: 3, b: 3, r: 5, q: 9 };
     const startingPieceCount = { p: 8, n: 2, b: 2, r: 2, q: 1 };
     const currentPieceCount = { w: { p: 0, n: 0, b: 0, r: 0, q: 0 }, b: { p: 0, n: 0, b: 0, r: 0, q: 0 }};
@@ -41,8 +40,6 @@ function GamePage() {
     return { whiteCaptures: wc, blackCaptures: bc, materialAdvantage: whiteMaterial - blackMaterial };
   }, [game]);
   
-  // --- MISSING FUNCTION DEFINITIONS ARE NOW INCLUDED ---
-
   function checkGameOver(gameInstance) {
     if (gameInstance.isGameOver()) {
       if (gameInstance.isCheckmate()) {
@@ -83,7 +80,7 @@ function GamePage() {
     }
     return result;
   }
-  
+
   function handleSquareClick(square) {
     if (gameOverMessage) return;
 
@@ -94,11 +91,7 @@ function GamePage() {
         return;
       }
       const moveResult = makeMove({ from: selectedSquare, to: square, promotion: 'q' });
-      if (moveResult) {
-        setSelectedSquare(null);
-      } else {
-        setSelectedSquare(null);
-      }
+      setSelectedSquare(null);
     } else {
       const piece = game.get(square);
       if (piece && piece.color === game.turn()) {
@@ -107,9 +100,15 @@ function GamePage() {
     }
   }
 
+  function handleDragStart(square) {
+    if (gameOverMessage) return;
+    setSelectedSquare(square);
+  }
+
   function handlePieceDrop(fromSquare, toSquare) {
     if (gameOverMessage) return;
     makeMove({ from: fromSquare, to: toSquare, promotion: 'q' });
+    setSelectedSquare(null);
   }
   
   const isCheck = game.inCheck();
@@ -127,6 +126,7 @@ function GamePage() {
           selectedSquare={selectedSquare}
           legalMoves={legalMoves}
           onPieceDrop={handlePieceDrop}
+          onDragStart={handleDragStart}
         />
       </div>
       <StatusPanel 

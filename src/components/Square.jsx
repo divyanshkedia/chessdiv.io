@@ -1,22 +1,27 @@
 import React from 'react';
 
-function Square({ piece, position, onSquareClick, isSelected, isLegalMove, onPieceDrop }) {
+function Square({ piece, position, onSquareClick, isSelected, isLegalMove, onPieceDrop, onDragStart }) {
   const pieceImage = piece ? `https://images.chesscomfiles.com/chess-themes/pieces/neo/150/${piece.color}${piece.type}.png` : '';
-  const squareClasses = `square ${(position.charCodeAt(0) + parseInt(position[1])) % 2 === 1 ? 'light' : 'dark'} ${isSelected ? 'selected' : ''}`;
+  const squareClasses = `square ${(position.charCodeAt(0) + parseInt(position[1], 10)) % 2 === 1 ? 'dark' : 'light'} ${isSelected ? 'selected' : ''}`;
 
   function handleDragStart(e) {
-    e.dataTransfer.setData('text/plain', position);
+    if (piece) {
+      onDragStart(position);
+      e.dataTransfer.setData('text/plain', position);
+      e.dataTransfer.effectAllowed = "move";
+    } else {
+      e.preventDefault();
+    }
   }
 
   function handleDragOver(e) {
-    e.preventDefault(); // This is necessary to allow a drop
+    e.preventDefault();
   }
 
   function handleDrop(e) {
     e.preventDefault();
     const fromSquare = e.dataTransfer.getData('text/plain');
-    const toSquare = position;
-    onPieceDrop(fromSquare, toSquare);
+    onPieceDrop(fromSquare, position);
   }
 
   return (

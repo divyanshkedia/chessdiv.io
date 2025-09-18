@@ -2,7 +2,7 @@ import React from 'react';
 import Square from './Square';
 import './CustomChessboard.css';
 
-function CustomChessboard({ board, orientation, onSquareClick, selectedSquare, legalMoves, onPieceDrop }) {
+function CustomChessboard({ board, orientation, onSquareClick, selectedSquare, legalMoves, onPieceDrop, onDragStart }) {
   const finalBoard = orientation === 'white' ? board : [...board].reverse().map(row => [...row].reverse());
 
   return (
@@ -20,7 +20,8 @@ function CustomChessboard({ board, orientation, onSquareClick, selectedSquare, l
               onSquareClick={onSquareClick}
               isSelected={position === selectedSquare}
               isLegalMove={legalMoves.includes(position)}
-              onPieceDrop={onPieceDrop} // Pass the new prop down
+              onPieceDrop={onPieceDrop}
+              onDragStart={onDragStart}
             />
           );
         })
